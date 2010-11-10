@@ -1,1 +1,3 @@
 VHDL
+
+VHDL2
