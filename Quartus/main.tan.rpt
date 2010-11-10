@@ -1,0 +1,540 @@
+Classic Timing Analyzer report for main
+Mon Nov 08 21:39:04 2010
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'clock'
+  7. Clock Hold: 'clock'
+  8. tsu
+  9. tco
+ 10. th
+ 11. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                              ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+----------------------------------+------------+----------+--------------+
+; Type                         ; Slack                                    ; Required Time ; Actual Time                      ; From                          ; To                               ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+----------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A                                      ; None          ; 5.546 ns                         ; transmit                      ; uart_transmitter:neco|bitocet[0] ; --         ; clock    ; 0            ;
+; Worst-case tco               ; N/A                                      ; None          ; 12.487 ns                        ; led[2]~reg0                   ; led[2]                           ; clock      ; --       ; 0            ;
+; Worst-case th                ; N/A                                      ; None          ; 0.420 ns                         ; data[6]                       ; uart_transmitter:neco|data_in[7] ; --         ; clock    ; 0            ;
+; Clock Setup: 'clock'         ; N/A                                      ; None          ; 297.89 MHz ( period = 3.357 ns ) ; uart_receiver:neco2|citac[10] ; uart_receiver:neco2|citac[3]     ; clock      ; clock    ; 0            ;
+; Clock Hold: 'clock'          ; Not operational: Clock Skew > Data Delay ; None          ; N/A                              ; uart_receiver:neco2|data[4]   ; led[4]~reg0                      ; clock      ; clock    ; 8            ;
+; Total number of failed paths ;                                          ;               ;                                  ;                               ;                                  ;            ;          ; 8            ;
++------------------------------+------------------------------------------+---------------+----------------------------------+-------------------------------+----------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; clock           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; rx              ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clock'                                                                                                                                                                                                                                                           ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+---------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                             ; To                              ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+---------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 297.89 MHz ( period = 3.357 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 3.143 ns                ;
+; N/A                                     ; 307.60 MHz ( period = 3.251 ns )                    ; uart_receiver:neco2|citac[10]    ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 3.034 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 317.76 MHz ( period = 3.147 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.933 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 321.65 MHz ( period = 3.109 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.895 ns                ;
+; N/A                                     ; 323.62 MHz ( period = 3.090 ns )                    ; uart_transmitter:neco|citac[0]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.876 ns                ;
+; N/A                                     ; 328.84 MHz ( period = 3.041 ns )                    ; uart_receiver:neco2|citac[9]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.824 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 329.49 MHz ( period = 3.035 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.821 ns                ;
+; N/A                                     ; 333.00 MHz ( period = 3.003 ns )                    ; uart_receiver:neco2|citac[11]    ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.786 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 334.22 MHz ( period = 2.992 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.778 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 338.41 MHz ( period = 2.955 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.741 ns                ;
+; N/A                                     ; 341.41 MHz ( period = 2.929 ns )                    ; uart_receiver:neco2|citac[0]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.712 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 342.70 MHz ( period = 2.918 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.704 ns                ;
+; N/A                                     ; 343.05 MHz ( period = 2.915 ns )                    ; uart_transmitter:neco|citac[0]   ; uart_transmitter:neco|citac[10] ; clock      ; clock    ; None                        ; None                      ; 2.701 ns                ;
+; N/A                                     ; 346.50 MHz ( period = 2.886 ns )                    ; uart_receiver:neco2|citac[2]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.669 ns                ;
+; N/A                                     ; 348.07 MHz ( period = 2.873 ns )                    ; uart_transmitter:neco|citac[3]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.659 ns                ;
+; N/A                                     ; 349.77 MHz ( period = 2.859 ns )                    ; uart_transmitter:neco|citac[1]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.643 ns                ;
+; N/A                                     ; 349.90 MHz ( period = 2.858 ns )                    ; uart_receiver:neco2|receiving2   ; uart_receiver:neco2|data[4]     ; clock      ; clock    ; None                        ; None                      ; 2.631 ns                ;
+; N/A                                     ; 351.00 MHz ( period = 2.849 ns )                    ; uart_receiver:neco2|citac[4]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.632 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 352.61 MHz ( period = 2.836 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.622 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 354.48 MHz ( period = 2.821 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.607 ns                ;
+; N/A                                     ; 355.62 MHz ( period = 2.812 ns )                    ; uart_receiver:neco2|citac[6]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.595 ns                ;
+; N/A                                     ; 358.68 MHz ( period = 2.788 ns )                    ; uart_transmitter:neco|citac[4]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.574 ns                ;
+; N/A                                     ; 361.01 MHz ( period = 2.770 ns )                    ; uart_transmitter:neco|bitocet[0] ; uart_transmitter:neco|tx        ; clock      ; clock    ; None                        ; None                      ; 2.556 ns                ;
+; N/A                                     ; 361.14 MHz ( period = 2.769 ns )                    ; uart_transmitter:neco|citac[6]   ; uart_transmitter:neco|citac[10] ; clock      ; clock    ; None                        ; None                      ; 2.555 ns                ;
+; N/A                                     ; 361.27 MHz ( period = 2.768 ns )                    ; uart_transmitter:neco|citac[6]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.554 ns                ;
+; N/A                                     ; 361.66 MHz ( period = 2.765 ns )                    ; uart_transmitter:neco|citac[0]   ; uart_transmitter:neco|citac[6]  ; clock      ; clock    ; None                        ; None                      ; 2.551 ns                ;
+; N/A                                     ; 362.19 MHz ( period = 2.761 ns )                    ; uart_transmitter:neco|citac[2]   ; uart_transmitter:neco|citac[12] ; clock      ; clock    ; None                        ; None                      ; 2.545 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 364.70 MHz ( period = 2.742 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.528 ns                ;
+; N/A                                     ; 366.30 MHz ( period = 2.730 ns )                    ; uart_receiver:neco2|citac[8]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.513 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 366.97 MHz ( period = 2.725 ns )                    ; uart_receiver:neco2|citac[3]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.511 ns                ;
+; N/A                                     ; 368.32 MHz ( period = 2.715 ns )                    ; uart_receiver:neco2|citac[1]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.498 ns                ;
+; N/A                                     ; 369.55 MHz ( period = 2.706 ns )                    ; uart_transmitter:neco|citac[3]   ; uart_transmitter:neco|citac[10] ; clock      ; clock    ; None                        ; None                      ; 2.492 ns                ;
+; N/A                                     ; 369.82 MHz ( period = 2.704 ns )                    ; uart_transmitter:neco|bitocet[1] ; uart_transmitter:neco|tx        ; clock      ; clock    ; None                        ; None                      ; 2.490 ns                ;
+; N/A                                     ; 370.37 MHz ( period = 2.700 ns )                    ; uart_receiver:neco2|clockstate   ; uart_receiver:neco2|data[4]     ; clock      ; clock    ; None                        ; None                      ; 2.473 ns                ;
+; N/A                                     ; 372.16 MHz ( period = 2.687 ns )                    ; uart_transmitter:neco|citac[4]   ; uart_transmitter:neco|citac[10] ; clock      ; clock    ; None                        ; None                      ; 2.473 ns                ;
+; N/A                                     ; 372.58 MHz ( period = 2.684 ns )                    ; uart_transmitter:neco|citac[1]   ; uart_transmitter:neco|citac[10] ; clock      ; clock    ; None                        ; None                      ; 2.468 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.13 MHz ( period = 2.680 ns )                    ; uart_receiver:neco2|citac[12]    ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.466 ns                ;
+; N/A                                     ; 373.83 MHz ( period = 2.675 ns )                    ; uart_receiver:neco2|bitocet[2]   ; uart_receiver:neco2|receive     ; clock      ; clock    ; None                        ; None                      ; 3.272 ns                ;
+; N/A                                     ; 375.80 MHz ( period = 2.661 ns )                    ; uart_receiver:neco2|receiving2   ; uart_receiver:neco2|data[2]     ; clock      ; clock    ; None                        ; None                      ; 2.434 ns                ;
+; N/A                                     ; 376.51 MHz ( period = 2.656 ns )                    ; uart_receiver:neco2|receiving2   ; uart_receiver:neco2|data[1]     ; clock      ; clock    ; None                        ; None                      ; 2.429 ns                ;
+; N/A                                     ; 377.22 MHz ( period = 2.651 ns )                    ; uart_receiver:neco2|receiving2   ; uart_receiver:neco2|data[3]     ; clock      ; clock    ; None                        ; None                      ; 2.424 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[0]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[12]   ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[4]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[6]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[7]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[5]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[10]   ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[11]   ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[9]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[8]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[2]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[1]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 377.79 MHz ( period = 2.647 ns )                    ; uart_receiver:neco2|citac[5]     ; uart_receiver:neco2|citac[3]    ; clock      ; clock    ; None                        ; None                      ; 2.433 ns                ;
+; N/A                                     ; 379.36 MHz ( period = 2.636 ns )                    ; uart_receiver:neco2|citac[7]     ; uart_receiver:neco2|clockstate  ; clock      ; clock    ; None                        ; None                      ; 2.419 ns                ;
+; N/A                                     ; 380.08 MHz ( period = 2.631 ns )                    ; uart_receiver:neco2|bitocet[3]   ; uart_receiver:neco2|receive     ; clock      ; clock    ; None                        ; None                      ; 3.228 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                  ;                                 ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+---------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Hold: 'clock'                                                                                                                                                                               ;
++------------------------------------------+-----------------------------+-------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Minimum Slack                            ; From                        ; To          ; From Clock ; To Clock ; Required Hold Relationship ; Required Shortest P2P Time ; Actual Shortest P2P Time ;
++------------------------------------------+-----------------------------+-------------+------------+----------+----------------------------+----------------------------+--------------------------+
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[4] ; led[4]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.531 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[6] ; led[6]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.534 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[3] ; led[3]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.535 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[0] ; led[0]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.536 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[2] ; led[2]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.536 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[1] ; led[1]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.560 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[5] ; led[5]~reg0 ; clock      ; clock    ; None                       ; None                       ; 0.672 ns                 ;
+; Not operational: Clock Skew > Data Delay ; uart_receiver:neco2|data[7] ; led[7]~reg0 ; clock      ; clock    ; None                       ; None                       ; 1.102 ns                 ;
++------------------------------------------+-----------------------------+-------------+------------+----------+----------------------------+----------------------------+--------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; tsu                                                                                         ;
++-------+--------------+------------+----------+-----------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From     ; To                                ; To Clock ;
++-------+--------------+------------+----------+-----------------------------------+----------+
+; N/A   ; None         ; 5.546 ns   ; transmit ; uart_transmitter:neco|tx          ; clock    ;
+; N/A   ; None         ; 5.546 ns   ; transmit ; uart_transmitter:neco|bitocet[2]  ; clock    ;
+; N/A   ; None         ; 5.546 ns   ; transmit ; uart_transmitter:neco|bitocet[3]  ; clock    ;
+; N/A   ; None         ; 5.546 ns   ; transmit ; uart_transmitter:neco|bitocet[1]  ; clock    ;
+; N/A   ; None         ; 5.546 ns   ; transmit ; uart_transmitter:neco|bitocet[0]  ; clock    ;
+; N/A   ; None         ; 4.721 ns   ; rx       ; uart_receiver:neco2|data[7]       ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[7]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[6]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[8]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[10] ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[2]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[4]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[5]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[1]  ; clock    ;
+; N/A   ; None         ; 4.676 ns   ; transmit ; uart_transmitter:neco|data_in[3]  ; clock    ;
+; N/A   ; None         ; 4.581 ns   ; transmit ; uart_transmitter:neco|state       ; clock    ;
+; N/A   ; None         ; 4.493 ns   ; rx       ; uart_receiver:neco2|data[1]       ; clock    ;
+; N/A   ; None         ; 4.492 ns   ; rx       ; uart_receiver:neco2|data[3]       ; clock    ;
+; N/A   ; None         ; 4.492 ns   ; rx       ; uart_receiver:neco2|data[6]       ; clock    ;
+; N/A   ; None         ; 4.488 ns   ; rx       ; uart_receiver:neco2|data[0]       ; clock    ;
+; N/A   ; None         ; 4.487 ns   ; rx       ; uart_receiver:neco2|data[5]       ; clock    ;
+; N/A   ; None         ; 4.434 ns   ; rx       ; uart_receiver:neco2|data[2]       ; clock    ;
+; N/A   ; None         ; 4.216 ns   ; rx       ; uart_receiver:neco2|data[4]       ; clock    ;
+; N/A   ; None         ; 0.337 ns   ; data[0]  ; uart_transmitter:neco|data_in[1]  ; clock    ;
+; N/A   ; None         ; 0.311 ns   ; data[1]  ; uart_transmitter:neco|data_in[2]  ; clock    ;
+; N/A   ; None         ; 0.159 ns   ; data[5]  ; uart_transmitter:neco|data_in[6]  ; clock    ;
+; N/A   ; None         ; 0.152 ns   ; data[4]  ; uart_transmitter:neco|data_in[5]  ; clock    ;
+; N/A   ; None         ; 0.097 ns   ; data[3]  ; uart_transmitter:neco|data_in[4]  ; clock    ;
+; N/A   ; None         ; -0.044 ns  ; data[2]  ; uart_transmitter:neco|data_in[3]  ; clock    ;
+; N/A   ; None         ; -0.162 ns  ; data[7]  ; uart_transmitter:neco|data_in[8]  ; clock    ;
+; N/A   ; None         ; -0.190 ns  ; data[6]  ; uart_transmitter:neco|data_in[7]  ; clock    ;
++-------+--------------+------------+----------+-----------------------------------+----------+
+
+
++------------------------------------------------------------------------------------+
+; tco                                                                                ;
++-------+--------------+------------+--------------------------+--------+------------+
+; Slack ; Required tco ; Actual tco ; From                     ; To     ; From Clock ;
++-------+--------------+------------+--------------------------+--------+------------+
+; N/A   ; None         ; 12.487 ns  ; led[2]~reg0              ; led[2] ; clock      ;
+; N/A   ; None         ; 11.899 ns  ; led[3]~reg0              ; led[3] ; clock      ;
+; N/A   ; None         ; 11.778 ns  ; led[0]~reg0              ; led[0] ; clock      ;
+; N/A   ; None         ; 11.688 ns  ; led[4]~reg0              ; led[4] ; clock      ;
+; N/A   ; None         ; 11.643 ns  ; led[5]~reg0              ; led[5] ; clock      ;
+; N/A   ; None         ; 11.601 ns  ; led[6]~reg0              ; led[6] ; clock      ;
+; N/A   ; None         ; 11.075 ns  ; led[1]~reg0              ; led[1] ; clock      ;
+; N/A   ; None         ; 10.699 ns  ; led[7]~reg0              ; led[7] ; clock      ;
+; N/A   ; None         ; 8.781 ns   ; uart_transmitter:neco|tx ; tx     ; clock      ;
++-------+--------------+------------+--------------------------+--------+------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; th                                                                                                ;
++---------------+-------------+-----------+----------+-----------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From     ; To                                ; To Clock ;
++---------------+-------------+-----------+----------+-----------------------------------+----------+
+; N/A           ; None        ; 0.420 ns  ; data[6]  ; uart_transmitter:neco|data_in[7]  ; clock    ;
+; N/A           ; None        ; 0.392 ns  ; data[7]  ; uart_transmitter:neco|data_in[8]  ; clock    ;
+; N/A           ; None        ; 0.274 ns  ; data[2]  ; uart_transmitter:neco|data_in[3]  ; clock    ;
+; N/A           ; None        ; 0.133 ns  ; data[3]  ; uart_transmitter:neco|data_in[4]  ; clock    ;
+; N/A           ; None        ; 0.078 ns  ; data[4]  ; uart_transmitter:neco|data_in[5]  ; clock    ;
+; N/A           ; None        ; 0.071 ns  ; data[5]  ; uart_transmitter:neco|data_in[6]  ; clock    ;
+; N/A           ; None        ; -0.081 ns ; data[1]  ; uart_transmitter:neco|data_in[2]  ; clock    ;
+; N/A           ; None        ; -0.107 ns ; data[0]  ; uart_transmitter:neco|data_in[1]  ; clock    ;
+; N/A           ; None        ; -3.986 ns ; rx       ; uart_receiver:neco2|data[4]       ; clock    ;
+; N/A           ; None        ; -4.204 ns ; rx       ; uart_receiver:neco2|data[2]       ; clock    ;
+; N/A           ; None        ; -4.257 ns ; rx       ; uart_receiver:neco2|data[5]       ; clock    ;
+; N/A           ; None        ; -4.258 ns ; rx       ; uart_receiver:neco2|data[0]       ; clock    ;
+; N/A           ; None        ; -4.262 ns ; rx       ; uart_receiver:neco2|data[3]       ; clock    ;
+; N/A           ; None        ; -4.262 ns ; rx       ; uart_receiver:neco2|data[6]       ; clock    ;
+; N/A           ; None        ; -4.263 ns ; rx       ; uart_receiver:neco2|data[1]       ; clock    ;
+; N/A           ; None        ; -4.351 ns ; transmit ; uart_transmitter:neco|state       ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[7]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[6]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[8]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[10] ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[2]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[4]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[5]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[1]  ; clock    ;
+; N/A           ; None        ; -4.446 ns ; transmit ; uart_transmitter:neco|data_in[3]  ; clock    ;
+; N/A           ; None        ; -4.491 ns ; rx       ; uart_receiver:neco2|data[7]       ; clock    ;
+; N/A           ; None        ; -5.316 ns ; transmit ; uart_transmitter:neco|tx          ; clock    ;
+; N/A           ; None        ; -5.316 ns ; transmit ; uart_transmitter:neco|bitocet[2]  ; clock    ;
+; N/A           ; None        ; -5.316 ns ; transmit ; uart_transmitter:neco|bitocet[3]  ; clock    ;
+; N/A           ; None        ; -5.316 ns ; transmit ; uart_transmitter:neco|bitocet[1]  ; clock    ;
+; N/A           ; None        ; -5.316 ns ; transmit ; uart_transmitter:neco|bitocet[0]  ; clock    ;
++---------------+-------------+-----------+----------+-----------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Mon Nov 08 21:39:03 2010
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off VGA -c main --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "clock" is an undefined clock
+    Info: Assuming node "rx" is an undefined clock
+Warning: Found 1 node(s) in clock paths which may be acting as ripple and/or gated clocks -- node(s) analyzed as buffer(s) resulting in clock skew
+    Info: Detected ripple clock "uart_receiver:neco2|receive" as buffer
+Info: Clock "clock" has Internal fmax of 297.89 MHz between source register "uart_receiver:neco2|citac[10]" and destination register "uart_receiver:neco2|citac[0]" (period= 3.357 ns)
+    Info: + Longest register to register delay is 3.143 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X57_Y21_N23; Fanout = 3; REG Node = 'uart_receiver:neco2|citac[10]'
+        Info: 2: + IC(0.729 ns) + CELL(0.438 ns) = 1.167 ns; Loc. = LCCOMB_X56_Y21_N0; Fanout = 1; COMB Node = 'uart_receiver:neco2|Equal0~2'
+        Info: 3: + IC(0.440 ns) + CELL(0.242 ns) = 1.849 ns; Loc. = LCCOMB_X57_Y21_N28; Fanout = 2; COMB Node = 'uart_receiver:neco2|Equal0~3'
+        Info: 4: + IC(0.254 ns) + CELL(0.150 ns) = 2.253 ns; Loc. = LCCOMB_X57_Y21_N30; Fanout = 13; COMB Node = 'uart_receiver:neco2|citac[0]~41'
+        Info: 5: + IC(0.231 ns) + CELL(0.659 ns) = 3.143 ns; Loc. = LCFF_X57_Y21_N3; Fanout = 3; REG Node = 'uart_receiver:neco2|citac[0]'
+        Info: Total cell delay = 1.489 ns ( 47.38 % )
+        Info: Total interconnect delay = 1.654 ns ( 52.62 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "clock" to destination register is 2.683 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+            Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G2; Fanout = 57; COMB Node = 'clock~clkctrl'
+            Info: 3: + IC(1.029 ns) + CELL(0.537 ns) = 2.683 ns; Loc. = LCFF_X57_Y21_N3; Fanout = 3; REG Node = 'uart_receiver:neco2|citac[0]'
+            Info: Total cell delay = 1.536 ns ( 57.25 % )
+            Info: Total interconnect delay = 1.147 ns ( 42.75 % )
+        Info: - Longest clock path from clock "clock" to source register is 2.683 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+            Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G2; Fanout = 57; COMB Node = 'clock~clkctrl'
+            Info: 3: + IC(1.029 ns) + CELL(0.537 ns) = 2.683 ns; Loc. = LCFF_X57_Y21_N23; Fanout = 3; REG Node = 'uart_receiver:neco2|citac[10]'
+            Info: Total cell delay = 1.536 ns ( 57.25 % )
+            Info: Total interconnect delay = 1.147 ns ( 42.75 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: No valid register-to-register data paths exist for clock "rx"
+Warning: Circuit may not operate. Detected 8 non-operational path(s) clocked by clock "clock" with clock skew larger than data delay. See Compilation Report for details.
+Info: Found hold time violation between source  pin or register "uart_receiver:neco2|data[4]" and destination pin or register "led[4]~reg0" for clock "clock" (Hold time is 2.667 ns)
+    Info: + Largest clock skew is 3.182 ns
+        Info: + Longest clock path from clock "clock" to destination register is 5.849 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+            Info: 2: + IC(1.943 ns) + CELL(0.787 ns) = 3.729 ns; Loc. = LCFF_X64_Y19_N31; Fanout = 1; REG Node = 'uart_receiver:neco2|receive'
+            Info: 3: + IC(0.583 ns) + CELL(0.000 ns) = 4.312 ns; Loc. = CLKCTRL_G5; Fanout = 8; COMB Node = 'uart_receiver:neco2|receive~clkctrl'
+            Info: 4: + IC(1.000 ns) + CELL(0.537 ns) = 5.849 ns; Loc. = LCFF_X50_Y22_N17; Fanout = 1; REG Node = 'led[4]~reg0'
+            Info: Total cell delay = 2.323 ns ( 39.72 % )
+            Info: Total interconnect delay = 3.526 ns ( 60.28 % )
+        Info: - Shortest clock path from clock "clock" to source register is 2.667 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+            Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G2; Fanout = 57; COMB Node = 'clock~clkctrl'
+            Info: 3: + IC(1.013 ns) + CELL(0.537 ns) = 2.667 ns; Loc. = LCFF_X50_Y22_N31; Fanout = 2; REG Node = 'uart_receiver:neco2|data[4]'
+            Info: Total cell delay = 1.536 ns ( 57.59 % )
+            Info: Total interconnect delay = 1.131 ns ( 42.41 % )
+    Info: - Micro clock to output delay of source is 0.250 ns
+    Info: - Shortest register to register delay is 0.531 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X50_Y22_N31; Fanout = 2; REG Node = 'uart_receiver:neco2|data[4]'
+        Info: 2: + IC(0.298 ns) + CELL(0.149 ns) = 0.447 ns; Loc. = LCCOMB_X50_Y22_N16; Fanout = 1; COMB Node = 'led[4]~reg0feeder'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 0.531 ns; Loc. = LCFF_X50_Y22_N17; Fanout = 1; REG Node = 'led[4]~reg0'
+        Info: Total cell delay = 0.233 ns ( 43.88 % )
+        Info: Total interconnect delay = 0.298 ns ( 56.12 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+Info: tsu for register "uart_transmitter:neco|tx" (data pin = "transmit", clock pin = "clock") is 5.546 ns
+    Info: + Longest pin to register delay is 8.249 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 11; PIN Node = 'transmit'
+        Info: 2: + IC(5.901 ns) + CELL(0.410 ns) = 7.173 ns; Loc. = LCCOMB_X35_Y20_N4; Fanout = 5; COMB Node = 'uart_transmitter:neco|tx~3'
+        Info: 3: + IC(0.416 ns) + CELL(0.660 ns) = 8.249 ns; Loc. = LCFF_X34_Y20_N1; Fanout = 1; REG Node = 'uart_transmitter:neco|tx'
+        Info: Total cell delay = 1.932 ns ( 23.42 % )
+        Info: Total interconnect delay = 6.317 ns ( 76.58 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "clock" to destination register is 2.667 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G2; Fanout = 57; COMB Node = 'clock~clkctrl'
+        Info: 3: + IC(1.013 ns) + CELL(0.537 ns) = 2.667 ns; Loc. = LCFF_X34_Y20_N1; Fanout = 1; REG Node = 'uart_transmitter:neco|tx'
+        Info: Total cell delay = 1.536 ns ( 57.59 % )
+        Info: Total interconnect delay = 1.131 ns ( 42.41 % )
+Info: tco from clock "clock" to destination pin "led[2]" through register "led[2]~reg0" is 12.487 ns
+    Info: + Longest clock path from clock "clock" to source register is 5.849 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+        Info: 2: + IC(1.943 ns) + CELL(0.787 ns) = 3.729 ns; Loc. = LCFF_X64_Y19_N31; Fanout = 1; REG Node = 'uart_receiver:neco2|receive'
+        Info: 3: + IC(0.583 ns) + CELL(0.000 ns) = 4.312 ns; Loc. = CLKCTRL_G5; Fanout = 8; COMB Node = 'uart_receiver:neco2|receive~clkctrl'
+        Info: 4: + IC(1.000 ns) + CELL(0.537 ns) = 5.849 ns; Loc. = LCFF_X50_Y22_N21; Fanout = 1; REG Node = 'led[2]~reg0'
+        Info: Total cell delay = 2.323 ns ( 39.72 % )
+        Info: Total interconnect delay = 3.526 ns ( 60.28 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 6.388 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X50_Y22_N21; Fanout = 1; REG Node = 'led[2]~reg0'
+        Info: 2: + IC(3.600 ns) + CELL(2.788 ns) = 6.388 ns; Loc. = PIN_W19; Fanout = 0; PIN Node = 'led[2]'
+        Info: Total cell delay = 2.788 ns ( 43.64 % )
+        Info: Total interconnect delay = 3.600 ns ( 56.36 % )
+Info: th for register "uart_transmitter:neco|data_in[7]" (data pin = "data[6]", clock pin = "clock") is 0.420 ns
+    Info: + Longest clock path from clock "clock" to destination register is 2.667 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N2; Fanout = 2; CLK Node = 'clock'
+        Info: 2: + IC(0.118 ns) + CELL(0.000 ns) = 1.117 ns; Loc. = CLKCTRL_G2; Fanout = 57; COMB Node = 'clock~clkctrl'
+        Info: 3: + IC(1.013 ns) + CELL(0.537 ns) = 2.667 ns; Loc. = LCFF_X34_Y20_N21; Fanout = 1; REG Node = 'uart_transmitter:neco|data_in[7]'
+        Info: Total cell delay = 1.536 ns ( 57.59 % )
+        Info: Total interconnect delay = 1.131 ns ( 42.41 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 2.513 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.989 ns) = 0.989 ns; Loc. = PIN_AC13; Fanout = 1; PIN Node = 'data[6]'
+        Info: 2: + IC(1.158 ns) + CELL(0.366 ns) = 2.513 ns; Loc. = LCFF_X34_Y20_N21; Fanout = 1; REG Node = 'uart_transmitter:neco|data_in[7]'
+        Info: Total cell delay = 1.355 ns ( 53.92 % )
+        Info: Total interconnect delay = 1.158 ns ( 46.08 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 168 megabytes
+    Info: Processing ended: Mon Nov 08 21:39:04 2010
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
+
+
