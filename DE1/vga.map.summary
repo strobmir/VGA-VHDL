@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Nov 15 11:25:08 2010
+Quartus II Version : 7.1 Build 178 06/25/2007 SP 1 SJ Full Version
+Revision Name : vga
+Top-level Entity Name : vga
+Family : Cyclone II
+Total logic elements : 120
+    Total combinational functions : 120
+    Dedicated logic registers : 69
+Total registers : 69
+Total pins : 37
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

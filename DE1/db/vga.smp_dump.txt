@@ -1,0 +1,14 @@
+
+State Machine - |vga|vertikal
+Name vertikal.front vertikal.data vertikal.back vertikal.syn 
+vertikal.syn 0 0 0 0 
+vertikal.back 0 0 1 1 
+vertikal.data 0 1 0 1 
+vertikal.front 1 0 0 1 
+
+State Machine - |vga|horizontal
+Name horizontal.front horizontal.data horizontal.back horizontal.syn 
+horizontal.syn 0 0 0 0 
+horizontal.back 0 0 1 1 
+horizontal.data 0 1 0 1 
+horizontal.front 1 0 0 1 
