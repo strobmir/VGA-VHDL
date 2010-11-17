@@ -1,0 +1,10 @@
+vlog -work {C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v} -refresh
+# Model Technology ModelSim PE Student Edition vlog 6.6c Compiler 2010.08 Aug 24 2010
+# ** Error: (vlog-19) Failed to access library 'C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v' at "C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v".
+# Invalid argument. (errno = EINVAL)
+# C:/Modeltech_pe_edu_6.6c/win32pe_edu/vlog failed.
+vcom -work {C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v} -refresh
+# Model Technology ModelSim PE Student Edition vcom 6.6c Compiler 2010.08 Aug 24 2010
+# ** Error: (vcom-19) Failed to access library 'C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v' at "C:\altera\91sp2\quartus\eda\sim_lib\altera_mf.v".
+# Invalid argument. (errno = EINVAL)
+# C:/Modeltech_pe_edu_6.6c/win32pe_edu/vcom failed.
