@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE EP2C35F672C6
 set_global_assignment -name TOP_LEVEL_ENTITY vga
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "10.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:30:13  NOVEMBER 12, 2010"
-set_global_assignment -name LAST_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name LAST_QUARTUS_VERSION "10.0 SP1"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
@@ -97,4 +97,5 @@ set_global_assignment -name VHDL_FILE ../RAM/ram.vhd
 set_global_assignment -name VHDL_FILE ../vga.vhd
 set_global_assignment -name QIP_FILE ../RAM/ram.qip
 set_global_assignment -name QIP_FILE ../ROM/rom.qip
+set_global_assignment -name MISC_FILE "C:/VGA-VHDL/DE2/vga.dpf"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

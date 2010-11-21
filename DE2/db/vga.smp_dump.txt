@@ -14,12 +14,12 @@ horizontal.data 0 1 0 1
 horizontal.front 1 0 0 1 
 
 State Machine - |vga|stavovy
-Name stavovy.zapis stavovy.ROMM5 stavovy.ROMM4 stavovy.ROMM3 stavovy.ROMM2 stavovy.ROMM1 stavovy.RAMM stavovy.cekej 
+Name stavovy.ROMM111 stavovy.ROMM11X stavovy.ROMM11 stavovy.ROMM1X stavovy.ROMM1 stavovy.RAMMX stavovy.RAMM stavovy.cekej 
 stavovy.cekej 0 0 0 0 0 0 0 0 
 stavovy.RAMM 0 0 0 0 0 0 1 1 
-stavovy.ROMM1 0 0 0 0 0 1 0 1 
-stavovy.ROMM2 0 0 0 0 1 0 0 1 
-stavovy.ROMM3 0 0 0 1 0 0 0 1 
-stavovy.ROMM4 0 0 1 0 0 0 0 1 
-stavovy.ROMM5 0 1 0 0 0 0 0 1 
-stavovy.zapis 1 0 0 0 0 0 0 1 
+stavovy.RAMMX 0 0 0 0 0 1 0 1 
+stavovy.ROMM1 0 0 0 0 1 0 0 1 
+stavovy.ROMM1X 0 0 0 1 0 0 0 1 
+stavovy.ROMM11 0 0 1 0 0 0 0 1 
+stavovy.ROMM11X 0 1 0 0 0 0 0 1 
+stavovy.ROMM111 1 0 0 0 0 0 0 1 

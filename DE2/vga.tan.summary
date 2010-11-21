@@ -2,22 +2,42 @@
 Timing Analyzer Summary
 --------------------------------------------------------------------------------------
 
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 7.647 ns
+From           : reset
+To             : ram_address[11]
+From Clock     : --
+To Clock       : clock
+Failed Paths   : 0
+
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 18.151 ns
-From           : pixel[1]
-To             : signal_g[0]
+Actual Time    : 26.718 ns
+From           : pixel[2]
+To             : signal_b[8]
 From Clock     : clock
 To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -7.190 ns
+From           : reset
+To             : ram_address[0]
+From Clock     : --
+To Clock       : clock
 Failed Paths   : 0
 
 Type           : Clock Setup: 'clock'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 142.67 MHz ( period = 7.009 ns )
-From           : radka[11]
-To             : cela_radka_g[11]
+Actual Time    : 111.25 MHz ( period = 8.989 ns )
+From           : znak_v[1]
+To             : ram_address[12]
 From Clock     : clock
 To Clock       : clock
 Failed Paths   : 0

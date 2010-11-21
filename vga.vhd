@@ -102,8 +102,53 @@ v_sync<=v_sync_b;
 
 --prednastaveni RAM adresy
 ramadr<=conv_std_logic_vector(0,13) when znak_v=0 else
-	    conv_std_logic_vector(128,13) when znak_v=1 else
-	    conv_std_logic_vector(256,13);
+	    conv_std_logic_vector(106,13) when znak_v=1 else
+		 conv_std_logic_vector(212,13) when znak_v=2 else
+		 conv_std_logic_vector(318,13) when znak_v=3 else
+		 conv_std_logic_vector(424,13) when znak_v=4 else
+		 conv_std_logic_vector(530,13) when znak_v=5 else
+		 conv_std_logic_vector(636,13) when znak_v=6 else
+		 conv_std_logic_vector(742,13) when znak_v=7 else
+		 conv_std_logic_vector(848,13) when znak_v=8 else
+		 conv_std_logic_vector(954,13) when znak_v=9 else
+		 conv_std_logic_vector(1060,13) when znak_v=10 else
+		 conv_std_logic_vector(1166,13) when znak_v=11 else
+		 conv_std_logic_vector(1272,13) when znak_v=12 else
+		 conv_std_logic_vector(1378,13) when znak_v=13 else
+		 conv_std_logic_vector(1484,13) when znak_v=14 else
+		 conv_std_logic_vector(1590,13) when znak_v=15 else
+		 conv_std_logic_vector(1696,13) when znak_v=16 else
+		 conv_std_logic_vector(1802,13) when znak_v=17 else
+		 conv_std_logic_vector(1908,13) when znak_v=18 else
+		 conv_std_logic_vector(2014,13) when znak_v=19 else
+		 conv_std_logic_vector(2120,13) when znak_v=20 else
+		 conv_std_logic_vector(2226,13) when znak_v=21 else
+		 conv_std_logic_vector(2332,13) when znak_v=22 else
+		 conv_std_logic_vector(2438,13) when znak_v=23 else
+		 conv_std_logic_vector(2544,13) when znak_v=24 else
+		 conv_std_logic_vector(2650,13) when znak_v=25 else
+		 conv_std_logic_vector(2756,13) when znak_v=26 else
+		 conv_std_logic_vector(2862,13) when znak_v=27 else
+		 conv_std_logic_vector(2968,13) when znak_v=28 else
+		 conv_std_logic_vector(3074,13) when znak_v=29 else
+		 conv_std_logic_vector(3180,13) when znak_v=30 else
+		 conv_std_logic_vector(3286,13) when znak_v=31 else
+		 conv_std_logic_vector(3392,13) when znak_v=32 else
+		 conv_std_logic_vector(3498,13) when znak_v=33 else
+		 conv_std_logic_vector(3604,13) when znak_v=34 else
+		 conv_std_logic_vector(3710,13) when znak_v=35 else
+		 conv_std_logic_vector(3816,13) when znak_v=36 else
+		 conv_std_logic_vector(3922,13) when znak_v=37 else
+		 conv_std_logic_vector(4028,13) when znak_v=38 else
+		 conv_std_logic_vector(4134,13) when znak_v=39 else
+		 conv_std_logic_vector(4240,13) when znak_v=40 else
+		 conv_std_logic_vector(4346,13) when znak_v=41 else
+		 conv_std_logic_vector(4452,13) when znak_v=42 else
+		 conv_std_logic_vector(4558,13) when znak_v=43 else
+		 conv_std_logic_vector(4664,13) when znak_v=44 else
+		 conv_std_logic_vector(4770,13) when znak_v=45 else
+		 conv_std_logic_vector(4876,13) when znak_v=46 else
+	    conv_std_logic_vector(4982,13);
 
 
 radkovani:process(clock, reset)
@@ -123,12 +168,16 @@ elsif clock'event and clock='1' then
   when cekej=>
    citac_znaku<=0;
    citac_pixelu<=0;
-    if h_sync_b=H_SYNC_POLARITY then
+    if h_sync_b=H_SYNC_POLARITY and radka_pom/=8 and radka_pom/=9 then
      stavovy<=RAMM;
-    end if;
+    elsif radka_pom=8 or radka_pom=9 then
+	 cela_radka_r<=(others=>'0');
+	 cela_radka_g<=(others=>'0');
+	 cela_radka_b<=(others=>'0');
+	 end if;
 
   when RAMM=>
-   if citac_znaku<=127 then
+   if citac_znaku<=105 then --127
     citac_znaku<=citac_znaku+1;
     ram_address<=ramadr+citac_znaku;
     ram_wren<='0';
@@ -158,7 +207,13 @@ elsif clock'event and clock='1' then
     --cela_radka_r<=rom_out(4 downto 0) & cela_radka_r(639 downto 5);
     if citac_pixelu<=635 then
     cela_radka_r(citac_pixelu+4 downto citac_pixelu)<=rom_out(4 downto 0);
-    citac_pixelu<=citac_pixelu+5;
+	 cela_radka_g(citac_pixelu+4 downto citac_pixelu)<=rom_out(4 downto 0);
+	 cela_radka_b(citac_pixelu+4 downto citac_pixelu)<=rom_out(4 downto 0);
+	 ---
+	 cela_radka_r(citac_pixelu+5)<='0';
+	 cela_radka_g(citac_pixelu+5)<='0';
+	 cela_radka_b(citac_pixelu+5)<='0';
+    citac_pixelu<=citac_pixelu+6;
     end if;
     stavovy<=RAMM;
 
@@ -308,7 +363,7 @@ radka<=(others=>'0');
 radka_pom<=(others=>'0');
 znak_v<=(others=>'0');
 else
-if radka_pom=7 then
+if radka_pom=9 then  --7
 znak_v<=znak_v+1;
 radka_pom<=(others=>'0');
 else
