@@ -2,45 +2,45 @@
 Timing Analyzer Summary
 --------------------------------------------------------------------------------------
 
-Type           : Worst-case tsu
-Slack          : N/A
-Required Time  : None
-Actual Time    : 7.647 ns
-From           : reset
-To             : ram_address[11]
-From Clock     : --
-To Clock       : clock
-Failed Paths   : 0
-
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 26.718 ns
-From           : pixel[2]
-To             : signal_b[8]
+Actual Time    : 12.652 ns
+From           : v_sync_b
+To             : v_sync
 From Clock     : clock
 To Clock       : --
 Failed Paths   : 0
 
-Type           : Worst-case th
+Type           : Worst-case tpd
 Slack          : N/A
 Required Time  : None
-Actual Time    : -7.190 ns
-From           : reset
-To             : ram_address[0]
+Actual Time    : 5.541 ns
+From           : clock
+To             : pixclk
 From Clock     : --
-To Clock       : clock
+To Clock       : --
 Failed Paths   : 0
 
 Type           : Clock Setup: 'clock'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 111.25 MHz ( period = 8.989 ns )
-From           : znak_v[1]
-To             : ram_address[12]
+Actual Time    : 199.40 MHz ( period = 5.015 ns )
+From           : vertikal_citac[3]
+To             : vertikal_citac[30]
 From Clock     : clock
 To Clock       : clock
 Failed Paths   : 0
+
+Type           : Clock Hold: 'clock'
+Slack          : Not operational: Clock Skew > Data Delay
+Required Time  : None
+Actual Time    : N/A
+From           : horizontal.syn
+To             : h_sync_b
+From Clock     : clock
+To Clock       : clock
+Failed Paths   : 1
 
 Type           : Total number of failed paths
 Slack          : 
@@ -50,7 +50,7 @@ From           :
 To             : 
 From Clock     : 
 To Clock       : 
-Failed Paths   : 0
+Failed Paths   : 1
 
 --------------------------------------------------------------------------------------
 
