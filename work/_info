@@ -4,60 +4,60 @@ K3
 cModel Technology
 Z0 dC:\VGA-VHDL
 Eram
-Z1 w1290001332
+Z1 w1290549110
 Z2 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
 Z3 dC:\VGA-VHDL\RAM
 Z4 8C:\VGA-VHDL\RAM\ram.vhd
 Z5 FC:\VGA-VHDL\RAM\ram.vhd
 l0
 L42
-V]GPkFgHf=j4IDj;lB5z2J3
+Vad7Wj]XU?240TAl2O@Rj^0
 Z6 OV;C;6.3g_p1;37
 31
 Z7 o-93 -O0 -check_synthesis -work c:/VGA-VHDL/work
 Z8 tExplicit 1
 Asyn
 R2
-DEx4 work 3 ram 0 22 ]GPkFgHf=j4IDj;lB5z2J3
+DEx4 work 3 ram 0 22 ad7Wj]XU?240TAl2O@Rj^0
 l86
 L54
-VZ4F>5?LI]QG<g7;EM0V@:2
+V`;G5gEClN;QmI[k>hJBHU3
 R6
 31
 Z9 Mx1 4 ieee 14 std_logic_1164
 R7
 R8
 Erom
-R1
+Z10 w1290536428
 R2
-Z10 dC:\VGA-VHDL\ROM
-Z11 8C:\VGA-VHDL\ROM\rom.vhd
-Z12 FC:\VGA-VHDL\ROM\rom.vhd
+Z11 dC:\VGA-VHDL\ROM
+Z12 8C:\VGA-VHDL\ROM\rom.vhd
+Z13 FC:\VGA-VHDL\ROM\rom.vhd
 l0
 L42
-Va9D_LT@>VEmLz9LN=QZ7<2
+V6[m`bXkJmBSfAm:1]SF=Q3
 R6
 31
 R7
 R8
 Asyn
 R2
-DEx4 work 3 rom 0 22 a9D_LT@>VEmLz9LN=QZ7<2
+DEx4 work 3 rom 0 22 6[m`bXkJmBSfAm:1]SF=Q3
 l81
 L52
-Vf?DDDV469>VC^f109]bec1
+Vh^JChBX6IH?nQnS_`AIgP1
 R6
 31
 R9
 R7
 R8
 Etestbench
-R1
-Z13 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
-Z14 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+Z14 w1290001332
+Z15 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z16 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
 R2
-Z15 8C:\VGA-VHDL\TESTBE~1.VHD
-Z16 FC:\VGA-VHDL\TESTBE~1.VHD
+Z17 8C:\VGA-VHDL\TESTBE~1.VHD
+Z18 FC:\VGA-VHDL\TESTBE~1.VHD
 l0
 L6
 V<lc7jQfTX9`K@:ImaY]MX0
@@ -66,8 +66,8 @@ R6
 R7
 R8
 Abehav
-R13
-R14
+R15
+R16
 R2
 DEx4 work 9 testbench 0 22 <lc7jQfTX9`K@:ImaY]MX0
 l22
@@ -75,37 +75,37 @@ L10
 VWa]>IOEze^b:jL1b>moeF2
 R6
 31
-Z17 Mx3 4 ieee 14 std_logic_1164
-Z18 Mx2 4 ieee 15 std_logic_arith
-Z19 Mx1 4 ieee 18 std_logic_unsigned
+Z19 Mx3 4 ieee 14 std_logic_1164
+Z20 Mx2 4 ieee 15 std_logic_arith
+Z21 Mx1 4 ieee 18 std_logic_unsigned
 R7
 R8
 Evga
-Z20 w1290523350
-R13
-R14
+Z22 w1290554247
+R15
+R16
 R2
-Z21 8C:\VGA-VHDL\vga.vhd
-Z22 FC:\VGA-VHDL\vga.vhd
+Z23 8C:\VGA-VHDL\vga.vhd
+Z24 FC:\VGA-VHDL\vga.vhd
 l0
 L6
-VR9>bNH>bm1mFCfDEReP<02
+VZAQROk]EWmBjOjHoZ;8L13
 R6
 31
 R7
 R8
 Abehav
-R13
-R14
+R15
+R16
 R2
-DEx4 work 3 vga 0 22 R9>bNH>bm1mFCfDEReP<02
-l104
+Z25 DEx4 work 3 vga 0 22 ZAQROk]EWmBjOjHoZ;8L13
+l106
 L38
-Z23 VUdzCbSY;AR[`9Sg7:>0nG1
+VRfRY5<`9]Ek2Bj=NDOf<F3
 R6
 31
-R17
-R18
 R19
+R20
+R21
 R7
 R8

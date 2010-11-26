@@ -1,0 +1,18 @@
+
+     R    G    B
+0 |  0    0    0  | black
+1 | 128   0    0  | dark red
+2 | 255   0    0  | red
+3 | 255  255   0  | pink
+4 |  0   128  128 | teal
+5 |  0   128   0  | green
+6 |  0   255   0  | bright green
+7 |  0   255  255 | turquoise
+8 |  0    0   128 | dark blue
+9 | 128   0   128 | violet
+A |  0    0   255 | blue
+B | 192  192  192 | gray 25
+C | 128  128  128 | gray 50
+D | 128  128   0  | dark yellow
+E | 255  255   0  | yellow
+F | 255  255  255 | white
