@@ -12,3 +12,22 @@ horizontal.syn 0 0 0 0
 horizontal.back 0 0 1 1 
 horizontal.data 0 1 0 1 
 horizontal.front 1 0 0 1 
+
+State Machine - |vga|stavovy
+Name stavovy.SESTNACTY stavovy.PATNACTY stavovy.CTRNACTY stavovy.TRINACTY stavovy.DVANACTY stavovy.JEDENACTY stavovy.DESATY stavovy.DEVATY stavovy.OSMY stavovy.DATA stavovy.ROM2 stavovy.ROM1 stavovy.ROMADR stavovy.RAM2 stavovy.RAM1 stavovy.RAMADR 
+stavovy.RAMADR 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+stavovy.RAM1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+stavovy.RAM2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+stavovy.ROMADR 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+stavovy.ROM1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+stavovy.ROM2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+stavovy.DATA 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+stavovy.OSMY 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+stavovy.DEVATY 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+stavovy.DESATY 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+stavovy.JEDENACTY 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+stavovy.DVANACTY 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+stavovy.TRINACTY 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+stavovy.CTRNACTY 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+stavovy.PATNACTY 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+stavovy.SESTNACTY 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

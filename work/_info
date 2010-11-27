@@ -65,6 +65,7 @@ R6
 31
 R7
 R8
+Z19 dC:\VGA-VHDL
 Abehav
 R15
 R16
@@ -75,37 +76,40 @@ L10
 VWa]>IOEze^b:jL1b>moeF2
 R6
 31
-Z19 Mx3 4 ieee 14 std_logic_1164
-Z20 Mx2 4 ieee 15 std_logic_arith
-Z21 Mx1 4 ieee 18 std_logic_unsigned
+Z20 Mx3 4 ieee 14 std_logic_1164
+Z21 Mx2 4 ieee 15 std_logic_arith
+Z22 Mx1 4 ieee 18 std_logic_unsigned
 R7
 R8
 Evga
-Z22 w1290554247
+Z23 w1290770725
 R15
 R16
 R2
-Z23 8C:\VGA-VHDL\vga.vhd
-Z24 FC:\VGA-VHDL\vga.vhd
+R19
+Z24 8C:\VGA-VHDL\vga.vhd
+Z25 FC:\VGA-VHDL\vga.vhd
 l0
 L6
-VZAQROk]EWmBjOjHoZ;8L13
-R6
+VeHz8CHVaCYS@PLPfzZY2o3
+!s100 5D]V<3BgOoz7;5eEmh^WI2
+Z26 OP;C;6.6c;45
 31
-R7
+Z27 o-93 -O0 -check_synthesis
 R8
 Abehav
 R15
 R16
 R2
-Z25 DEx4 work 3 vga 0 22 ZAQROk]EWmBjOjHoZ;8L13
+DEx4 work 3 vga 0 22 eHz8CHVaCYS@PLPfzZY2o3
 l106
 L38
-VRfRY5<`9]Ek2Bj=NDOf<F3
-R6
+V1JF6b2D@Mhb0nMKDLEZ3N3
+!s100 :iVZXfmTZR=g>W3Gd`z1i0
+R26
 31
-R19
 R20
 R21
-R7
+R22
+R27
 R8

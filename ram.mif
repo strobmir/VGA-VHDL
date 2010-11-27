@@ -1,0 +1,90 @@
+DEPTH = 8192;                   -- The size of data in bits
+WIDTH = 16;                    -- The size of memory in words
+ADDRESS_RADIX = HEX;          -- The radix for address values
+DATA_RADIX = HEX;             -- The radix for data values
+CONTENT                       -- start of (address : data pairs)
+BEGIN
+
+00 : 0453;
+01 : 0469;
+02 : 046C;
+03 : 046E;
+04 : 0469;
+05 : 0463;
+06 : 0461;
+07 : 0472;
+08 : 0465;
+09 : 0F20;
+0A : E070;
+0B : E06F;
+0C : E072;
+0D : E061;
+0E : E064;
+0F : E06E;
+10 : E065;
+11 : 0F20;
+12 : 0D70;
+13 : 0D72;
+14 : 0D6F;
+15 : 0D76;
+16 : 0D65;
+17 : 0D72;
+18 : 0D69;
+19 : 0F20;
+1A : 0F70;
+1B : 0F72;
+1C : 0F76;
+1D : 0F6E;
+1E : 0F69;
+1F : 0F20;
+20 : 0F73;
+21 : 0F6E;
+22 : 0F65;
+23 : 0F68;
+24 : 0F6F;
+25 : 0F76;
+26 : 0F61;
+27 : 0F20;
+28 : 0F6B;
+29 : 0F61;
+2A : 0F6C;
+2B : 0F61;
+2C : 0F6D;
+2D : 0F69;
+2E : 0F74;
+2F : 0F61;
+30 : 0F20;
+31 : 0F6C;
+32 : 0F65;
+33 : 0F74;
+34 : 0F6F;
+35 : 0F73;
+36 : 0F6E;
+37 : 0F69;
+38 : 0F20;
+39 : 0F7A;
+3A : 0F69;
+3B : 0F6D;
+3C : 0F79;
+3D : 0F2E;
+3E : 0F20;
+3F : 0F44;
+40 : 0F6F;
+41 : 0F20;
+42 : 0F70;
+43 : 0F6F;
+44 : 0F6E;
+45 : 0F64;
+46 : 0F65;
+47 : 0F6C;
+48 : 0F6E;
+49 : 0F69;
+4A : 0F68;
+4B : 0F6F;
+4C : 0F20;
+4D : 0F72;
+4E : 0F61;
+4F : 0F6E;
+
+
+END;

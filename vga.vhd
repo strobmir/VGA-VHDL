@@ -123,7 +123,7 @@ stavovy<=RAM1;
 end if;
 
 
-ram_address<=conv_std_logic_vector(znak_v*(H_DATA/VYSKA_ZNAKU)*16+znak_h+1,13);
+ram_address<=conv_std_logic_vector(znak_v*(H_DATA/SIRKA_ZNAKU)+znak_h+1,13);
 
 when RAM1=>
 stavovy<=RAM2;
@@ -132,7 +132,7 @@ when RAM2=>
 stavovy<=ROMADR;
 
 when ROMADR=>
-rom_address<=conv_std_logic_vector(conv_integer(ram_out(7 downto 0))*8+radka_pom,11);
+rom_address<=conv_std_logic_vector((conv_integer(ram_out(7 downto 0))*8)+radka_pom,11);
 stavovy<=ROM1;
 
 when ROM1=>
