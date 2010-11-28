@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="test">
+		<CBX_INST_ENTRY INSTANCE_NAME="|test|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_bso.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|test|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_08m.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|test|vga:vgacko|ram:ram_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_ad72.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|test|vga:vgacko|rom:rom_inst|altsyncram:altsyncram_component" CBX_FILE_NAME="altsyncram_8t61.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

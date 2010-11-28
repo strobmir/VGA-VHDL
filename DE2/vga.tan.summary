@@ -5,9 +5,9 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 6.945 ns
-From           : reset
-To             : sig_out[8]
+Actual Time    : 8.072 ns
+From           : vga_wren
+To             : ram:ram_inst|altsyncram:altsyncram_component|altsyncram_ad72:auto_generated|ram_block1a26~portb_we_reg
 From Clock     : --
 To Clock       : clock
 Failed Paths   : 0
@@ -15,9 +15,9 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 18.959 ns
+Actual Time    : 17.537 ns
 From           : pixel_pom[0]
-To             : signal_b[4]
+To             : signal_r[0]
 From Clock     : clock
 To Clock       : --
 Failed Paths   : 0
@@ -25,9 +25,9 @@ Failed Paths   : 0
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : -3.936 ns
-From           : reset
-To             : ram_address[0]
+Actual Time    : -2.961 ns
+From           : vga_address[0]
+To             : ram:ram_inst|altsyncram:altsyncram_component|altsyncram_ad72:auto_generated|ram_block1a20~portb_address_reg0
 From Clock     : --
 To Clock       : clock
 Failed Paths   : 0
@@ -35,7 +35,7 @@ Failed Paths   : 0
 Type           : Clock Setup: 'clock'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 111.93 MHz ( period = 8.934 ns )
+Actual Time    : 105.03 MHz ( period = 9.521 ns )
 From           : znak_v[0]
 To             : ram_address[12]
 From Clock     : clock

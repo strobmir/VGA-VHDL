@@ -8,7 +8,7 @@ generic(
 H_SYNC_POLARITY:std_logic:='0';
 V_SYNC_POLARITY:std_logic:='0';
 
-CLK_DIV : integer range 1 to 2:=2;
+CLK_DIV : integer range 1 to 2:=2; --2 1
 
 H_SYN   : integer:=96; --96 120
 H_BACK  : integer:=48; --48 64
@@ -20,15 +20,35 @@ V_DATA  : integer:=480; --480 600
 V_FRONT : integer:=10; --10 37
 PIXELU_NA_RADKU : integer:=800; --800 10bit 1040
 
-SIRKA_ZNAKU : integer:=8;
-VYSKA_ZNAKU : integer:=8
+SIRKA_ZNAKU : integer:=8; --8
+VYSKA_ZNAKU : integer:=8; --8
+
+BITOVA_SIRKA_BARVY : integer:=10;
+
+COLOR_FULL : integer:=1023;
+COLOR_HALF : integer:=511;
+COLOR_TRICTVRTE : integer:=737;
+COLOR_NIC : integer:=0
 );
 port(
 clock, reset : in std_logic;
 h_sync, v_sync, pixclk : out std_logic;
-signal_r, signal_g, signal_b : out std_logic_vector(9 downto 0);
-vga_sync : out std_logic:='1';
-vga_blank : out std_logic:='1'
+signal_r, signal_g, signal_b : out std_logic_vector(BITOVA_SIRKA_BARVY-1 downto 0);
+sync : out std_logic:='1';
+blank : out std_logic:='1';
+
+video_enable : out std_logic;
+
+vga_address : in std_logic_vector(12 downto 0);
+vga_data : in std_logic_vector(15 downto 0);
+vga_wren : in std_logic;
+vga_out : out std_logic_vector(15 downto 0);
+
+pixel_h : buffer integer range 0 to H_DATA-1;
+pixel_v : buffer integer range 0 to V_DATA-1;
+
+znak_h : buffer integer range -1 to H_DATA/SIRKA_ZNAKU;
+znak_v : buffer integer range 0 to V_DATA/VYSKA_ZNAKU-1
 );
 end entity;
 
@@ -41,11 +61,15 @@ architecture behav of vga is
 COMPONENT ram IS
 	PORT
 	(
-		address		: IN STD_LOGIC_VECTOR (12 DOWNTO 0);
-		clock		: IN STD_LOGIC ;
-		data		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
-		wren		: IN STD_LOGIC ;
-		q		: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+		address_a		: IN STD_LOGIC_VECTOR (12 DOWNTO 0);
+		address_b		: IN STD_LOGIC_VECTOR (12 DOWNTO 0);
+		clock		: IN STD_LOGIC  := '1';
+		data_a		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		data_b		: IN STD_LOGIC_VECTOR (15 DOWNTO 0);
+		wren_a		: IN STD_LOGIC  := '0';
+		wren_b		: IN STD_LOGIC  := '0';
+		q_a		: OUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+		q_b		: OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
 	);
 END COMPONENT ram;
 COMPONENT rom IS
@@ -69,21 +93,16 @@ signal vertikal : state;
 signal vertikal_citac : integer;
 signal vertikal_citac_line : integer;
 -------
-signal h_enable, v_enable, enable : std_logic;
+signal h_enable, v_enable: std_logic;
 -------
-signal r_sig_backg, g_sig_backg, b_sig_backg, r_sig_font, g_sig_font, b_sig_font, r_sig, b_sig, g_sig : std_logic_vector(9 downto 0);
-constant color_full : std_logic_vector(9 downto 0):="1111111111";
-constant color_half : std_logic_vector(9 downto 0):="1000000000";
-constant color_trictvrte : std_logic_vector(9 downto 0):="1100000000";
-constant color_nic : std_logic_vector(9 downto 0):="0000000000";
+signal r_sig_backg, g_sig_backg, b_sig_backg, r_sig_font, g_sig_font, b_sig_font, r_sig, b_sig, g_sig : std_logic_vector(BITOVA_SIRKA_BARVY-1 downto 0);
 -------posice znaku a pixelu/radky
-signal znak_h : integer range -1 to H_DATA/SIRKA_ZNAKU;
-signal znak_v : integer range 0 to V_DATA/VYSKA_ZNAKU-1;
-signal znak_h_min : integer range 0 to H_DATA/SIRKA_ZNAKU-1;
-signal znak_v_min : integer range 0 to V_DATA/VYSKA_ZNAKU-1;
+--signal znak_h : integer range -1 to H_DATA/SIRKA_ZNAKU;
+--signal znak_v : integer range 0 to V_DATA/VYSKA_ZNAKU-1;
 signal radka : integer range 0 to V_DATA-1;
 signal radka_pom : integer range 0 to VYSKA_ZNAKU-1;
-signal pixel : integer range 0 to H_DATA-1;
+--signal pixel_h : integer range 0 to H_DATA-1;
+--signal pixel_v : integer range 0 to V_DATA-1;
 signal pixel_pom : integer range 0 to SIRKA_ZNAKU-1;
 
 
@@ -107,7 +126,7 @@ begin
 
 h_sync<=h_sync_b;
 v_sync<=v_sync_b;
-
+video_enable<=h_enable and v_enable;
 
 radkovani:process(clock, reset)
 begin
@@ -193,15 +212,12 @@ end process;
 
 -- podmineny vystup RGB signalu
 signal_r<=r_sig when h_enable='1' and v_enable='1' else
-          "0000000000";
+          conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY);
 signal_g<=g_sig when h_enable='1' and v_enable='1' else
-          "0000000000";
+          conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY);
 signal_b<=b_sig when h_enable='1' and v_enable='1' else
-          "0000000000";
+          conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY);
 ----------
-
-
-
 
 horizontalni:process(pixel_clock_fin, reset)
 begin
@@ -210,13 +226,13 @@ h_sync_b<=not H_SYNC_POLARITY;
 horizontal<=syn;
 horizontal_citac<=H_SYN;
 h_enable<='0';
---pixel<=0;
+pixel_h<=0;
 pixel_pom<=0;
 znak_h<=0;
 elsif pixel_clock_fin'event and pixel_clock_fin='1' then
 
 if h_enable='0' then
---pixel<=0;
+pixel_h<=0;
 pixel_pom<=0;
 znak_h<=-1;
 
@@ -228,7 +244,7 @@ elsif pixel_pom=SIRKA_ZNAKU-1 then
 znak_h<=znak_h+1;
 pixel_pom<=0;
 else
---pixel<=pixel+1;
+pixel_h<=pixel_h+1;
 pixel_pom<=pixel_pom+1;
 end if;
 
@@ -283,10 +299,9 @@ if reset='0' then
 v_sync_b<=not V_SYNC_POLARITY;
 vertikal<=syn;
 vertikal_citac<=V_SYN;
---vertikal_citac_line<=PIXELU_NA_RADKU-1;
---vertikal_citac_line<="111111111111"-conv_std_logic_vector(96, vertikal_citac_line'length);
 v_enable<='0';
 --radka<=0;
+pixel_v<=0;
 radka_pom<=0;
 znak_v<=0;
 elsif h_sync_b'event and h_sync_b= H_SYNC_POLARITY then   --konec syncu na horizontu
@@ -294,15 +309,18 @@ elsif h_sync_b'event and h_sync_b= H_SYNC_POLARITY then   --konec syncu na horiz
 
 if radka=V_DATA-1 or v_enable='0' then
 --radka<=0;
+pixel_v<=0;
 radka_pom<=0;
 znak_v<=0;
 else
+pixel_v<=pixel_v+1;
 if radka_pom=VYSKA_ZNAKU-1 then  --7
 znak_v<=znak_v+1;
 radka_pom<=0;
 else
 radka_pom<=radka_pom+1;
 --radka<=radka+1;
+pixel_v<=pixel_v+1;
 end if;
 end if;
 
@@ -359,11 +377,15 @@ end process;
 
 
 ram_inst : ram PORT MAP (
-		address	 => ram_address,
+		address_a	 => ram_address,
+		address_b    => vga_address,
 		clock	 => clock,
-		data	 => ram_data,
-		wren	 => ram_wren,
-		q	 => ram_out
+		data_a => ram_data,
+		data_b => vga_data,
+		wren_a => ram_wren,
+		wren_b => vga_wren,
+		q_a	 => ram_out,
+		q_b    => vga_out
 	);
 rom_inst : rom PORT MAP (
 		address	 => rom_address,
@@ -374,103 +396,103 @@ rom_inst : rom PORT MAP (
 
 
 --kombinacni hruzodesnost ...
-r_sig_backg <= color_nic when sig_out(15 downto 12)=0 else
-               color_half when sig_out(15 downto 12)=1 else
-               color_full when sig_out(15 downto 12)=2 else
-               color_full when sig_out(15 downto 12)=3 else
-               color_nic when sig_out(15 downto 12)=4 else
-               color_nic when sig_out(15 downto 12)=5 else
-               color_nic when sig_out(15 downto 12)=6 else
-               color_nic when sig_out(15 downto 12)=7 else
-               color_nic when sig_out(15 downto 12)=8 else
-               color_half when sig_out(15 downto 12)=9 else
-               color_nic when sig_out(15 downto 12)=10 else
-               color_trictvrte when sig_out(15 downto 12)=11 else
-               color_half when sig_out(15 downto 12)=12 else
-               color_half when sig_out(15 downto 12)=13 else
-               color_full when sig_out(15 downto 12)=14 else
-               color_full;
-g_sig_backg <= color_nic when sig_out(15 downto 12)=0 else
-               color_nic when sig_out(15 downto 12)=1 else
-               color_nic when sig_out(15 downto 12)=2 else
-               color_nic when sig_out(15 downto 12)=3 else
-               color_half when sig_out(15 downto 12)=4 else
-               color_half when sig_out(15 downto 12)=5 else
-               color_full when sig_out(15 downto 12)=6 else
-               color_full when sig_out(15 downto 12)=7 else
-               color_nic when sig_out(15 downto 12)=8 else
-               color_nic when sig_out(15 downto 12)=9 else
-               color_nic when sig_out(15 downto 12)=10 else
-               color_trictvrte when sig_out(15 downto 12)=11 else
-               color_half when sig_out(15 downto 12)=12 else
-               color_half when sig_out(15 downto 12)=13 else
-               color_full when sig_out(15 downto 12)=14 else
-               color_full;
-b_sig_backg <= color_nic when sig_out(15 downto 12)=0 else
-               color_nic when sig_out(15 downto 12)=1 else
-               color_nic when sig_out(15 downto 12)=2 else
-               color_nic when sig_out(15 downto 12)=3 else
-               color_half when sig_out(15 downto 12)=4 else
-               color_nic when sig_out(15 downto 12)=5 else
-               color_nic when sig_out(15 downto 12)=6 else
-               color_full when sig_out(15 downto 12)=7 else
-               color_half when sig_out(15 downto 12)=8 else
-               color_half when sig_out(15 downto 12)=9 else
-               color_full when sig_out(15 downto 12)=10 else
-               color_trictvrte when sig_out(15 downto 12)=11 else
-               color_half when sig_out(15 downto 12)=12 else
-               color_nic when sig_out(15 downto 12)=13 else
-               color_nic when sig_out(15 downto 12)=14 else
-               color_full;
+r_sig_backg <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=0 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=1 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=2 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=3 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=4 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=5 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=6 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=7 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=8 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=9 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=10 else
+               conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=11 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=12 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=13 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=14 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
+g_sig_backg <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=0 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=1 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=2 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=3 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=4 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=5 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=6 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=7 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=8 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=9 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=10 else
+               conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=11 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=12 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=13 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=14 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
+b_sig_backg <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=0 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=1 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=2 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=3 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=4 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=5 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=6 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=7 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=8 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=9 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=10 else
+               conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=11 else
+               conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=12 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=13 else
+               conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(15 downto 12)=14 else
+               conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
 -----------------------------------------------------------
-r_sig_font <= color_nic when sig_out(11 downto 8)=0 else
-              color_half when sig_out(11 downto 8)=1 else
-              color_full when sig_out(11 downto 8)=2 else
-              color_full when sig_out(11 downto 8)=3 else
-              color_nic when sig_out(11 downto 8)=4 else
-              color_nic when sig_out(11 downto 8)=5 else
-              color_nic when sig_out(11 downto 8)=6 else
-              color_nic when sig_out(11 downto 8)=7 else
-              color_nic when sig_out(11 downto 8)=8 else
-              color_half when sig_out(11 downto 8)=9 else
-              color_nic when sig_out(11 downto 8)=10 else
-              color_trictvrte when sig_out(11 downto 8)=11 else
-              color_half when sig_out(11 downto 8)=12 else
-              color_half when sig_out(11 downto 8)=13 else
-              color_full when sig_out(11 downto 8)=14 else
-              color_full;
-g_sig_font <= color_nic when sig_out(11 downto 8)=0 else
-              color_nic when sig_out(11 downto 8)=1 else
-              color_nic when sig_out(11 downto 8)=2 else
-              color_nic when sig_out(11 downto 8)=3 else
-              color_half when sig_out(11 downto 8)=4 else
-              color_half when sig_out(11 downto 8)=5 else
-              color_full when sig_out(11 downto 8)=6 else
-              color_full when sig_out(11 downto 8)=7 else
-              color_nic when sig_out(11 downto 8)=8 else
-              color_nic when sig_out(11 downto 8)=9 else
-              color_nic when sig_out(11 downto 8)=10 else
-              color_trictvrte when sig_out(11 downto 8)=11 else
-              color_half when sig_out(11 downto 8)=12 else
-              color_half when sig_out(11 downto 8)=13 else
-              color_full when sig_out(11 downto 8)=14 else
-              color_full;
-b_sig_font <= color_nic when sig_out(11 downto 8)=0 else
-              color_nic when sig_out(11 downto 8)=1 else
-              color_nic when sig_out(11 downto 8)=2 else
-              color_nic when sig_out(11 downto 8)=3 else
-              color_half when sig_out(11 downto 8)=4 else
-              color_nic when sig_out(11 downto 8)=5 else
-              color_nic when sig_out(11 downto 8)=6 else
-              color_full when sig_out(11 downto 8)=7 else
-              color_half when sig_out(11 downto 8)=8 else
-              color_half when sig_out(11 downto 8)=9 else
-              color_full when sig_out(11 downto 8)=10 else
-              color_trictvrte when sig_out(11 downto 8)=11 else
-              color_half when sig_out(11 downto 8)=12 else
-              color_nic when sig_out(11 downto 8)=13 else
-              color_nic when sig_out(11 downto 8)=14 else
-              color_full;
+r_sig_font <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=0 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=1 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=2 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=3 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=4 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=5 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=6 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=7 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=8 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=9 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=10 else
+              conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=11 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=12 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=13 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=14 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
+g_sig_font <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=0 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=1 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=2 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=3 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=4 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=5 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=6 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=7 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=8 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=9 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=10 else
+              conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=11 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=12 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=13 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=14 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
+b_sig_font <= conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=0 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=1 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=2 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=3 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=4 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=5 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=6 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=7 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=8 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=9 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=10 else
+              conv_std_logic_vector(COLOR_TRICTVRTE, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=11 else
+              conv_std_logic_vector(COLOR_HALF, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=12 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=13 else
+              conv_std_logic_vector(COLOR_NIC, BITOVA_SIRKA_BARVY) when sig_out(11 downto 8)=14 else
+              conv_std_logic_vector(COLOR_FULL, BITOVA_SIRKA_BARVY);
 
 r_sig<=r_sig_backg when sig_out(pixel_pom)='0' else
        r_sig_font;

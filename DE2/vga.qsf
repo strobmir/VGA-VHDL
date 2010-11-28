@@ -87,8 +87,6 @@ set_location_assignment PIN_B12 -to signal_b[9]
 set_location_assignment PIN_A7 -to h_sync
 set_location_assignment PIN_B8 -to pixclk
 set_location_assignment PIN_D8 -to v_sync
-set_location_assignment PIN_B7 -to vga_sync
-set_location_assignment PIN_D6 -to vga_blank
 set_global_assignment -name DEVICE_FILTER_PACKAGE ANY
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT ANY
 set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
@@ -98,4 +96,6 @@ set_global_assignment -name VHDL_FILE ../vga.vhd
 set_global_assignment -name QIP_FILE ../RAM/ram.qip
 set_global_assignment -name QIP_FILE ../ROM/rom.qip
 set_global_assignment -name MISC_FILE "C:/VGA-VHDL/DE2/vga.dpf"
+set_location_assignment PIN_B7 -to sync
+set_location_assignment PIN_D6 -to blank
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

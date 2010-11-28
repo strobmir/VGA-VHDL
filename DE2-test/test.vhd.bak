@@ -1,0 +1,71 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity test is
+port(
+clock, reset : std_logic;
+h_sync, v_sync, pixclk : std_logic;
+signal_r, signal_g, signal_b : std_logic_vector(9 downto 0);
+sync : std_logic:='1';
+blank : std_logic:='1';
+sw : in std_logic_vector(15 downto 0);
+key1, key2, key3 : in std_logic;
+hex : out std_logic_vector(55 downto 0)
+);
+end entity;
+
+
+
+architecture behav of test is
+component vga is
+generic( 
+H_SYNC_POLARITY:std_logic;
+V_SYNC_POLARITY:std_logic;
+
+CLK_DIV : integer range 1 to 2; --2 1
+
+H_SYN   : integer; --96 120
+H_BACK  : integer; --48 64
+H_DATA  : integer; --640 800
+H_FRONT : integer; --16 56
+V_SYN   : integer; --2 6
+V_BACK  : integer; --33 23
+V_DATA  : integer; --480 600
+V_FRONT : integer; --10 37
+PIXELU_NA_RADKU : integer; --800 10bit 1040
+
+SIRKA_ZNAKU : integer; --8
+VYSKA_ZNAKU : integer; --8
+
+BITOVA_SIRKA_BARVY : integer;
+
+COLOR_FULL : integer;
+COLOR_HALF : integer;
+COLOR_TRICTVRTE : integer;
+COLOR_NIC : integer
+);
+port(
+clock, reset : std_logic;
+h_sync, v_sync, pixclk : std_logic;
+signal_r, signal_g, signal_b : std_logic_vector(BITOVA_SIRKA_BARVY-1 downto 0);
+sync : std_logic:='1';
+blank : std_logic:='1';
+
+vga_address : std_logic_vector(12 downto 0);
+vga_data : std_logic_vector(15 downto 0);
+vga_wren : std_logic;
+vga_out : std_logic_vector(15 downto 0)
+);
+end component;
+
+
+
+begin
+
+hex<=(others=>'0');
+
+vgacko : vga generic map(0,0,2,96,48,640,16,2,33,480,10,800,8,8,10,1023,511,737,0) port map(clock, reset, h_sync, v_sync,pixclk,signal_r,signal_g,signal_b,sync,blank,open,open,open,open);
+
+end architecture;
