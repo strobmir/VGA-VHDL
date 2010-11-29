@@ -1,7 +1,7 @@
 Quartus II
-Version 10.0 Build 262 08/18/2010 Service Pack 1 SJ Web Edition
-12
-1007
+Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+11
+1002
 OFF
 OFF
 OFF
@@ -20,10 +20,145 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
+vga
+# storage
+db|test.(1).cnf
+db|test.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+|vga-vhdl|vga.vhd
+6361a1935898ea92eba1b7ff3e208f46
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+h_sync_polarity
+'0'
+PARAMETER_ENUM
+USR
+v_sync_polarity
+'0'
+PARAMETER_ENUM
+USR
+clk_div
+2
+PARAMETER_SIGNED_DEC
+USR
+h_syn
+96
+PARAMETER_SIGNED_DEC
+USR
+h_back
+48
+PARAMETER_SIGNED_DEC
+USR
+h_data
+640
+PARAMETER_SIGNED_DEC
+USR
+h_front
+16
+PARAMETER_SIGNED_DEC
+USR
+v_syn
+2
+PARAMETER_SIGNED_DEC
+USR
+v_back
+33
+PARAMETER_SIGNED_DEC
+USR
+v_data
+480
+PARAMETER_SIGNED_DEC
+USR
+v_front
+10
+PARAMETER_SIGNED_DEC
+USR
+pixelu_na_radku
+800
+PARAMETER_SIGNED_DEC
+USR
+sirka_znaku
+8
+PARAMETER_SIGNED_DEC
+USR
+vyska_znaku
+8
+PARAMETER_SIGNED_DEC
+USR
+bitova_sirka_barvy
+10
+PARAMETER_SIGNED_DEC
+USR
+color_full
+1023
+PARAMETER_SIGNED_DEC
+USR
+color_half
+511
+PARAMETER_SIGNED_DEC
+USR
+color_trictvrte
+737
+PARAMETER_SIGNED_DEC
+USR
+color_nic
+0
+PARAMETER_SIGNED_DEC
+USR
+ constraint(signal_r)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(signal_g)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(signal_b)
+9 downto 0
+PARAMETER_STRING
+USR
+ constraint(vga_address)
+12 downto 0
+PARAMETER_STRING
+USR
+ constraint(vga_data)
+15 downto 0
+PARAMETER_STRING
+USR
+ constraint(vga_out)
+15 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+vga:vgacko
+}
+# lmf
+|altera|91sp2|quartus|lmf|maxplus2.lmf
+a36c8ec425c8a2589af98b2d4daabc3
+# macro_sequence
+
+# end
+# entity
 ram
 # storage
-db|test.(11).cnf
-db|test.(11).cnf
+db|test.(2).cnf
+db|test.(2).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -73,7 +208,7 @@ USR
 vga:vgacko|ram:ram_inst
 }
 # lmf
-|altera|10.0sp1|quartus|lmf|maxplus2.lmf
+|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
@@ -81,12 +216,12 @@ a36c8ec425c8a2589af98b2d4daabc3
 # entity
 altsyncram
 # storage
-db|test.(12).cnf
-db|test.(12).cnf
+db|test.(3).cnf
+db|test.(3).cnf
 # case_insensitive
 # source_file
-|altera|10.0sp1|quartus|libraries|megafunctions|altsyncram.tdf
-2214ab20c0942a8ca3f5b049ef70cc3b
+|altera|91sp2|quartus|libraries|megafunctions|altsyncram.tdf
+67d9a3902c8a461c1d5750189e124f2
 7
 # user_parameter {
 BYTE_SIZE_BLOCK
@@ -580,12 +715,12 @@ vga:vgacko|ram:ram_inst|altsyncram:altsyncram_component
 # entity
 altsyncram_ad72
 # storage
-db|test.(13).cnf
-db|test.(13).cnf
+db|test.(4).cnf
+db|test.(4).cnf
 # case_insensitive
 # source_file
 db|altsyncram_ad72.tdf
-a687458a3ce09b8840bf54161e44d8
+e08db769ce446340112eaf6885cd22b9
 7
 # used_port {
 wren_b
@@ -881,12 +1016,12 @@ vga:vgacko|ram:ram_inst|altsyncram:altsyncram_component|altsyncram_ad72:auto_gen
 # entity
 decode_1oa
 # storage
-db|test.(14).cnf
-db|test.(14).cnf
+db|test.(5).cnf
+db|test.(5).cnf
 # case_insensitive
 # source_file
 db|decode_1oa.tdf
-a7274bdaa214a6c719e03ab4de2d8f29
+ec831a9cea0a752b932227acfa98ca9
 7
 # used_port {
 eq1
@@ -912,12 +1047,12 @@ vga:vgacko|ram:ram_inst|altsyncram:altsyncram_component|altsyncram_ad72:auto_gen
 # entity
 mux_0kb
 # storage
-db|test.(15).cnf
-db|test.(15).cnf
+db|test.(6).cnf
+db|test.(6).cnf
 # case_insensitive
 # source_file
 db|mux_0kb.tdf
-9d416fcf41cffb2a42216532bc11841
+cdca45edfdfcd9a19deb13dd9c5730
 7
 # used_port {
 sel0
@@ -1078,8 +1213,8 @@ vga:vgacko|ram:ram_inst|altsyncram:altsyncram_component|altsyncram_ad72:auto_gen
 # entity
 rom
 # storage
-db|test.(16).cnf
-db|test.(16).cnf
+db|test.(7).cnf
+db|test.(7).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -1113,7 +1248,7 @@ USR
 vga:vgacko|rom:rom_inst
 }
 # lmf
-|altera|10.0sp1|quartus|lmf|maxplus2.lmf
+|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
@@ -1121,12 +1256,12 @@ a36c8ec425c8a2589af98b2d4daabc3
 # entity
 altsyncram
 # storage
-db|test.(17).cnf
-db|test.(17).cnf
+db|test.(8).cnf
+db|test.(8).cnf
 # case_insensitive
 # source_file
-|altera|10.0sp1|quartus|libraries|megafunctions|altsyncram.tdf
-2214ab20c0942a8ca3f5b049ef70cc3b
+|altera|91sp2|quartus|libraries|megafunctions|altsyncram.tdf
+67d9a3902c8a461c1d5750189e124f2
 7
 # user_parameter {
 BYTE_SIZE_BLOCK
@@ -1401,12 +1536,12 @@ vga:vgacko|rom:rom_inst|altsyncram:altsyncram_component
 # entity
 altsyncram_8t61
 # storage
-db|test.(18).cnf
-db|test.(18).cnf
+db|test.(9).cnf
+db|test.(9).cnf
 # case_insensitive
 # source_file
 db|altsyncram_8t61.tdf
-114bdec1e4f1899e7a70867b344128f
+c3d335803fe1beeaa3876ddf5e9eb369
 7
 # used_port {
 q_a7
@@ -1483,12 +1618,12 @@ vga:vgacko|rom:rom_inst|altsyncram:altsyncram_component|altsyncram_8t61:auto_gen
 # entity
 lpm_divide
 # storage
-db|test.(19).cnf
-db|test.(19).cnf
+db|test.(10).cnf
+db|test.(10).cnf
 # case_insensitive
 # source_file
-|altera|10.0sp1|quartus|libraries|megafunctions|lpm_divide.tdf
-72da53dcc282e8811a79c81a4f715983
+|altera|91sp2|quartus|libraries|megafunctions|lpm_divide.tdf
+54966f81ff8a917b1dc9b9ad1a09648
 7
 # user_parameter {
 LPM_WIDTHN
@@ -1673,12 +1808,12 @@ denom4
 # entity
 lpm_divide_08m
 # storage
-db|test.(20).cnf
-db|test.(20).cnf
+db|test.(11).cnf
+db|test.(11).cnf
 # case_insensitive
 # source_file
 db|lpm_divide_08m.tdf
-ad72ed1fd48d9d2f848750345b6db81
+1ad8a8db619450f5623b42f143ab88
 7
 # used_port {
 remain9
@@ -1805,12 +1940,12 @@ denom0
 # entity
 sign_div_unsign_7nh
 # storage
-db|test.(21).cnf
-db|test.(21).cnf
+db|test.(12).cnf
+db|test.(12).cnf
 # case_insensitive
 # source_file
 db|sign_div_unsign_7nh.tdf
-c0c95351622b160b4c43545d9441aa9
+375070caf0c7dba3ae665ada28d5a589
 7
 # used_port {
 remainder9
@@ -1976,12 +2111,12 @@ denominator0
 # entity
 alt_u_div_g5f
 # storage
-db|test.(22).cnf
-db|test.(22).cnf
+db|test.(13).cnf
+db|test.(13).cnf
 # case_insensitive
 # source_file
 db|alt_u_div_g5f.tdf
-7634bed0cd98b685b532b6622407e7b
+818d1acb118ba0ec28e0d8dce04f26ae
 7
 # used_port {
 remainder9
@@ -2147,12 +2282,12 @@ denominator0
 # entity
 add_sub_lkc
 # storage
-db|test.(23).cnf
-db|test.(23).cnf
+db|test.(14).cnf
+db|test.(14).cnf
 # case_insensitive
 # source_file
 db|add_sub_lkc.tdf
-a13f414512e31ee58cb389a497f7d66b
+b2a1251a432948d540b9ad92d3593
 7
 # used_port {
 result0
@@ -2174,12 +2309,12 @@ cout
 # entity
 add_sub_mkc
 # storage
-db|test.(24).cnf
-db|test.(24).cnf
+db|test.(15).cnf
+db|test.(15).cnf
 # case_insensitive
 # source_file
 db|add_sub_mkc.tdf
-951d7578ae82a8f7d0c8b4c45a7f7c
+57177a76ef9543d7eb6282b9a890a9
 7
 # used_port {
 result1
@@ -2210,12 +2345,12 @@ cout
 # entity
 lpm_divide
 # storage
-db|test.(25).cnf
-db|test.(25).cnf
+db|test.(16).cnf
+db|test.(16).cnf
 # case_insensitive
 # source_file
-|altera|10.0sp1|quartus|libraries|megafunctions|lpm_divide.tdf
-72da53dcc282e8811a79c81a4f715983
+|altera|91sp2|quartus|libraries|megafunctions|lpm_divide.tdf
+54966f81ff8a917b1dc9b9ad1a09648
 7
 # user_parameter {
 LPM_WIDTHN
@@ -2397,12 +2532,12 @@ denom4
 # entity
 lpm_divide_bso
 # storage
-db|test.(26).cnf
-db|test.(26).cnf
+db|test.(17).cnf
+db|test.(17).cnf
 # case_insensitive
 # source_file
 db|lpm_divide_bso.tdf
-abf2374ef13c677371c8589cbd6572
+e765f1162cfcf6bcd4c5eb83d6a0f4b4
 7
 # used_port {
 quotient9
@@ -2526,12 +2661,12 @@ denom0
 # entity
 abs_divider_obg
 # storage
-db|test.(27).cnf
-db|test.(27).cnf
+db|test.(18).cnf
+db|test.(18).cnf
 # case_insensitive
 # source_file
 db|abs_divider_obg.tdf
-362efd5fbb2927e3f0283ffcfbff0
+8f98638179756c13e8bceba8442c8d45
 7
 # used_port {
 remainder7
@@ -2679,12 +2814,12 @@ denominator0
 # entity
 alt_u_div_s2f
 # storage
-db|test.(28).cnf
-db|test.(28).cnf
+db|test.(19).cnf
+db|test.(19).cnf
 # case_insensitive
 # source_file
 db|alt_u_div_s2f.tdf
-3a87e1e2a73dd2ac711b9e74bed5705f
+f16cf8d7c3ec68a39d73f1d5736f4b6
 7
 # used_port {
 remainder7
@@ -2832,12 +2967,12 @@ denominator0
 # entity
 lpm_abs_jq9
 # storage
-db|test.(29).cnf
-db|test.(29).cnf
+db|test.(20).cnf
+db|test.(20).cnf
 # case_insensitive
 # source_file
 db|lpm_abs_jq9.tdf
-68b8a8bff292419ea7c3dd29c9b7b6d
+9d64efe97145316163b544a94d1da8
 7
 # used_port {
 result7
@@ -2895,12 +3030,12 @@ data0
 # entity
 lpm_abs_1s9
 # storage
-db|test.(30).cnf
-db|test.(30).cnf
+db|test.(21).cnf
+db|test.(21).cnf
 # case_insensitive
 # source_file
 db|lpm_abs_1s9.tdf
-6df3f5fb288ad940e8f40a8fe922e33
+f0ada723dfaee04cb2abe8b78c2d6c
 7
 # used_port {
 result9
@@ -3000,8 +3135,8 @@ data0
 # entity
 vga
 # storage
-db|test.(10).cnf
-db|test.(10).cnf
+db|test.(22).cnf
+db|test.(22).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -3009,7 +3144,7 @@ ON
 # case_insensitive
 # source_file
 |vga-vhdl|vga.vhd
-a1e9635b4c8515fc5e23ff7bcff9584
+6361a1935898ea92eba1b7ff3e208f46
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -3031,43 +3166,43 @@ v_sync_polarity
 PARAMETER_ENUM
 USR
 clk_div
-2
+1
 PARAMETER_SIGNED_DEC
 USR
 h_syn
-96
+120
 PARAMETER_SIGNED_DEC
 USR
 h_back
-48
+64
 PARAMETER_SIGNED_DEC
 USR
 h_data
-640
+800
 PARAMETER_SIGNED_DEC
 USR
 h_front
-16
+56
 PARAMETER_SIGNED_DEC
 USR
 v_syn
-2
+6
 PARAMETER_SIGNED_DEC
 USR
 v_back
-33
+23
 PARAMETER_SIGNED_DEC
 USR
 v_data
-480
+600
 PARAMETER_SIGNED_DEC
 USR
 v_front
-10
+37
 PARAMETER_SIGNED_DEC
 USR
 pixelu_na_radku
-800
+1040
 PARAMETER_SIGNED_DEC
 USR
 sirka_znaku
@@ -3123,11 +3258,8 @@ USR
 PARAMETER_STRING
 USR
 }
-# hierarchies {
-vga:vgacko
-}
 # lmf
-|altera|10.0sp1|quartus|lmf|maxplus2.lmf
+|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 
@@ -3144,7 +3276,7 @@ ON
 # case_insensitive
 # source_file
 test.vhd
-7f75ab7ec6819823c01ae352354593
+559163429ac98dcce254f18bf5abef6b
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -3160,7 +3292,7 @@ ON
 |
 }
 # lmf
-|altera|10.0sp1|quartus|lmf|maxplus2.lmf
+|altera|91sp2|quartus|lmf|maxplus2.lmf
 a36c8ec425c8a2589af98b2d4daabc3
 # macro_sequence
 

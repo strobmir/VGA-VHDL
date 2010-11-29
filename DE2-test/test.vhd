@@ -104,8 +104,12 @@ signal_g<="1111111111" when (znak_h=conv_integer(ramadr) mod 80 and znak_v=(conv
 signal_b<="1111111111" when (znak_h=conv_integer(ramadr) mod 80 and znak_v=(conv_integer(ramadr)-(conv_integer(ramadr) mod 80))/80) and video_enable='1' and (blik='1' or shift='1') else
 		    signal_b_b;
 
+--signal_r<="1111111111" when pixel_v>=100 and pixel_v<=200 and pixel_h>=100 and pixel_h<=200 else
+--		  "0000000000";
 
 
+--signal_g<="1111111111" when (pixel_h=400 or pixel_v=300) else
+--          "0000000000";
 
 hex(6 downto 0)<=MY_LUT(conv_integer(ramadr(3 downto 0)));
 hex(13 downto 7)<=MY_LUT(conv_integer(ramadr(7 downto 4)));
@@ -160,7 +164,7 @@ shift<='0';
  ramadr<=ramadr-1;
  
  if ramadr=0 then
-  ramadr<=conv_std_logic_vector(X"12BF",13);
+  ramadr<=conv_std_logic_vector(4799,13);
   end if;
  
  tlen2<='0';
@@ -173,7 +177,7 @@ shift<='0';
   ramadr<=ramadr-1;
   
   if ramadr=0 then
-  ramadr<=conv_std_logic_vector(X"12BF",13);
+  ramadr<=conv_std_logic_vector(4799,13);
   end if;
   
   tlcount2<=(25=>'0',24=>'0',23=>'0',22=>'0',21=>'0',others=>'1');

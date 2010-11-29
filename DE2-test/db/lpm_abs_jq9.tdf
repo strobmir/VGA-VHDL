@@ -1,5 +1,5 @@
 --lpm_abs CARRY_CHAIN="MANUAL" DEVICE_FAMILY="Cyclone II" IGNORE_CARRY_BUFFERS="OFF" LPM_WIDTH=8 data result
---VERSION_BEGIN 10.0SP1 cbx_cycloneii 2010:08:18:22:25:40:SJ cbx_lpm_abs 2010:08:18:22:25:40:SJ cbx_lpm_add_sub 2010:08:18:22:25:40:SJ cbx_mgl 2010:08:18:22:28:55:SJ cbx_stratix 2010:08:18:22:25:41:SJ cbx_stratixii 2010:08:18:22:25:41:SJ cbx_util_mgl 2010:08:18:22:25:41:SJ  VERSION_END
+--VERSION_BEGIN 9.1SP2 cbx_cycloneii 2010:03:24:20:43:43:SJ cbx_lpm_abs 2010:03:24:20:43:43:SJ cbx_lpm_add_sub 2010:03:24:20:43:43:SJ cbx_mgl 2010:03:24:21:01:05:SJ cbx_stratix 2010:03:24:20:43:43:SJ cbx_stratixii 2010:03:24:20:43:43:SJ cbx_util_mgl 2010:03:24:20:43:43:SJ  VERSION_END
 
 
 -- Copyright (C) 1991-2010 Altera Corporation

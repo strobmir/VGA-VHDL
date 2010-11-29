@@ -15,7 +15,7 @@ Failed Paths   : 0
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 76.774 ns
+Actual Time    : 76.843 ns
 From           : ramadr[11]
 To             : signal_r[0]
 From Clock     : clock
@@ -45,7 +45,7 @@ Failed Paths   : 0
 Type           : Clock Setup: 'clock'
 Slack          : N/A
 Required Time  : None
-Actual Time    : 92.82 MHz ( period = 10.773 ns )
+Actual Time    : 93.10 MHz ( period = 10.741 ns )
 From           : vga:vgacko|znak_v[2]
 To             : vga:vgacko|ram_address[12]
 From Clock     : clock

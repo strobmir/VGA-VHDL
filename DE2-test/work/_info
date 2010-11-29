@@ -1,0 +1,141 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\VGA-VHDL\DE2-test
+Eram
+Z1 w1290962146
+Z2 DPx4 ieee 14 std_logic_1164 0 22 GH1=`jDDBJ=`LM;:Ak`kf2
+Z3 dC:\VGA-VHDL\RAM
+Z4 8C:\VGA-VHDL\RAM\ram.vhd
+Z5 FC:\VGA-VHDL\RAM\ram.vhd
+l0
+L42
+V3Rg67N4JP8hJ7eCYRM[WV2
+Z6 OV;C;6.3g_p1;37
+31
+Z7 o-93 -O0 -check_synthesis -work c:/VGA-VHDL/DE2-test/work
+Z8 tExplicit 1
+Asyn
+R2
+DEx4 work 3 ram 0 22 3Rg67N4JP8hJ7eCYRM[WV2
+l106
+L58
+VY;:CkzR57dLoRTd?Jd8zZ0
+R6
+31
+Z9 Mx1 4 ieee 14 std_logic_1164
+R7
+R8
+Erom
+R1
+R2
+Z10 dC:\VGA-VHDL\ROM
+Z11 8C:\VGA-VHDL\ROM\rom.vhd
+Z12 FC:\VGA-VHDL\ROM\rom.vhd
+l0
+L42
+V3Ngm=E`]JA4GkVkPhT0j62
+R6
+31
+R7
+R8
+Asyn
+R2
+DEx4 work 3 rom 0 22 3Ngm=E`]JA4GkVkPhT0j62
+l81
+L52
+VIB8BF9>gW@`c<H62aTNlD2
+R6
+31
+R9
+R7
+R8
+Etest
+Z13 w1291026147
+Z14 DPx4 ieee 18 std_logic_unsigned 0 22 hEMVMlaNCR^<OOoVNV;m90
+Z15 DPx4 ieee 15 std_logic_arith 0 22 GJbAT?7@hRQU9IQ702DT]2
+R2
+Z16 8C:\VGA-VHDL\DE2-test\test.vhd
+Z17 FC:\VGA-VHDL\DE2-test\test.vhd
+l0
+L6
+V9OcFJ=hJeFe;RK>]3O?gT2
+R6
+31
+R7
+R8
+Abehav
+R14
+R15
+R2
+DEx4 work 4 test 0 22 9OcFJ=hJeFe;RK>]3O?gT2
+l94
+L21
+VJDzIiDkFZPh=<93<6848S3
+R6
+31
+Z18 Mx3 4 ieee 14 std_logic_1164
+Z19 Mx2 4 ieee 15 std_logic_arith
+Z20 Mx1 4 ieee 18 std_logic_unsigned
+R7
+R8
+Etestbench
+Z21 w1291026380
+R14
+R15
+R2
+Z22 8C:\VGA-VHDL\DE2-test\TESTBE~1.VHD
+Z23 FC:\VGA-VHDL\DE2-test\TESTBE~1.VHD
+l0
+L6
+V;K4h9;5fACYR_c:koLJ0M2
+R6
+31
+R7
+R8
+Abehav
+R14
+R15
+R2
+DEx4 work 9 testbench 0 22 ;K4h9;5fACYR_c:koLJ0M2
+l25
+L10
+VLXWIb>IngXz8iN4lfEBDa3
+R6
+31
+R18
+R19
+R20
+R7
+R8
+Evga
+R1
+R14
+R15
+R2
+Z24 dC:\VGA-VHDL
+Z25 8C:\VGA-VHDL\vga.vhd
+Z26 FC:\VGA-VHDL\vga.vhd
+l0
+L6
+VebK9J1U1:T`aR0QdZ<=mc3
+R6
+31
+R7
+R8
+Abehav
+R14
+R15
+R2
+DEx4 work 3 vga 0 22 ebK9J1U1:T`aR0QdZ<=mc3
+l125
+L58
+V8Y0dWFEX:C=nd36N0BQGN2
+R6
+31
+R18
+R19
+R20
+R7
+R8
